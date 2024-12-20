@@ -21,9 +21,9 @@ public class NewUserSignupTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String name = "Laszlo";
-        String emailAddress = "laszlo" + System.currentTimeMillis() + "@test.com";
-        String password = "gothicChichi";
+        String name = "Apaczai";
+        String emailAddress = "death_kinght@test.com";
+        String password = "nothinng";
         String dateOfBirthDay = "2";
         String dateOfBirthMonth = "January";
         String dateOfBirthYear = "1992";
@@ -44,33 +44,18 @@ public class NewUserSignupTest {
 
         NewUserSignupPage newUserSignupPage = new NewUserSignupPage(driver);
         newUserSignupPage.fillUserEmail(name, emailAddress);
-        System.out.println("Am completat numele și email-ul.");
-
         newUserSignupPage.clickSignupButton();
-        System.out.println("Am apăsat pe butonul Signup.");
 
         newUserSignupPage.clickSelectTitle();
-        System.out.println("Titlul selectat.");
-
         newUserSignupPage.fillPasswordField(password);
-        System.out.println("Parola completată.");
-
         newUserSignupPage.selectDateOfBirth(dateOfBirthDay, dateOfBirthMonth, dateOfBirthYear);
-        System.out.println("Data nașterii selectată.");
-
         newUserSignupPage.selectOptionFromCheckbox();
-        System.out.println("Checkbox-urile selectate.");
-
         AddressInformationPage addressInformationPage = new AddressInformationPage(driver);
         addressInformationPage.fillAddressInformation(firstName, lastName, company, address, address2, country,
                 state, city, zipCode, mobileNumber);
-        System.out.println("Informațiile de adresă completate.");
 
         addressInformationPage.clickCreateAccount();
-        System.out.println("Contul a fost creat.");
-
         newUserSignupPage.clickContinueButton();
-        System.out.println("Am apăsat pe butonul Continue.");
 
         newUserSignupPage.clickDeleteAccount();
         System.out.println("Contul a fost șters cu succes.");

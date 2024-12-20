@@ -1,6 +1,7 @@
 package helpMethods;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,6 +61,8 @@ public class ElementMethods {
         element.clear();
     }
 
+
+
     public void fillElementWithFallback(WebElement element, String value) {
         try {
             // Așteaptă ca elementul să fie vizibil și interactiv
@@ -79,5 +82,11 @@ public class ElementMethods {
         } catch (Exception ex) {
             System.out.println("Eroare la completare: " + ex.getMessage());
         }
+    }
+
+    public void hoverOverElement(WebElement element) {
+        waitVisibleElement(element); // Ensure the element is visible
+        Actions actions = new Actions(driver); // Initialize the Actions class
+        actions.moveToElement(element).perform(); // Move to the element
     }
 }
