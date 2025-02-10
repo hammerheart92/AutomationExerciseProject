@@ -6,10 +6,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenCategoryPage;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class AddProductsToCartTest {
+public class AddProductsToCartTest extends SharedData {
 
     public WebDriver driver;
 
