@@ -11,23 +11,26 @@ public class LoginToYourAccountPage extends BasePage{
     }
 
     @FindBy(css = "input[data-qa='login-email']")
-    public WebElement emailAddressElement;
+    private WebElement emailAddressElement;
     @FindBy(css = "input[data-qa='login-password']")
-    public WebElement passwordElement;
+    private WebElement passwordElement;
     @FindBy(css = "button[data-qa='login-button']")
-    public WebElement loginButton;
+    private WebElement loginButton;
     @FindBy(xpath = "//i[@class='fa fa-trash-o']")
-    public WebElement deleteAccountFromLoginElement;
+    private WebElement deleteAccountFromLoginElement;
     @FindBy(xpath = "//a[contains(@class, 'btn-primary') and text()='Continue']")
-    public WebElement continueButton2FromLoginPage;
+    private WebElement continueButton2FromLoginPage;
 
     public void fillEmailPassword(String emailAddressValue, String passwordValue){
         elementMethods.fillElementWithFallback(emailAddressElement, emailAddressValue);
+        loggerUtility.infoLog("The User fills Email Address field with " + emailAddressValue + " value");
         elementMethods.fillElementWithFallback(passwordElement, passwordValue);
+        loggerUtility.infoLog("The User fills Password field with " + passwordValue + " value");
     }
 
     public void clickLogin(){
         elementMethods.clickJSElement(loginButton);
+        loggerUtility.infoLog("The User clicks on Login button");
     }
 
     public void deleteAccountFromLoginPage(){

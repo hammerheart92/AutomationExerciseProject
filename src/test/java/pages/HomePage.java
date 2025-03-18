@@ -11,46 +11,52 @@ public class HomePage extends BasePage {
     }
 
     @FindBy(xpath = "//i[@class='fa fa-lock']")
-    public WebElement signupLoginMenu;
+    private WebElement signupLoginMenu;
     @FindBy(xpath = "//i[@class='fa fa-envelope']")
-    public WebElement contactUsMenu;
+    private WebElement contactUsMenu;
     @FindBy(xpath = "//a[@href='/products']")
-    public WebElement productsButton;
+    private WebElement productsButton;
     @FindBy(xpath = "//a[normalize-space()='Men']")
-    public WebElement menCategoryMenu;
+    private WebElement menCategoryMenu;
     @FindBy(css = "i[class='fa fa-shopping-cart']")
-    public WebElement cartMenu;
+    private WebElement cartMenu;
     @FindBy(xpath = "//a[@href='/product_details/2']")
-    public WebElement viewProduct2;
+    private WebElement viewProduct2;
     @FindBy(id = "quantity")
-    public WebElement quantityInput;
+    private WebElement quantityInput;
     @FindBy(css = "button[class='btn btn-default cart']")
-    public WebElement addToCartButton;
+    private WebElement addToCartButton;
     @FindBy(xpath = "//a[@href='/view_cart']")
-    public WebElement viewCartButton;
+    private WebElement viewCartButton;
 
     public void clickSignupLogin(){
         elementMethods.clickJSElement(signupLoginMenu);
+        loggerUtility.infoLog("The User clicks on Signup/Login menu ");
     }
 
     public void clickContactUs(){
         elementMethods.clickJSElement(contactUsMenu);
+        loggerUtility.infoLog("The User clicks on Contact us menu ");
     }
 
     public void clickProductsButton(){
         elementMethods.clickJSElement(productsButton);
+        loggerUtility.infoLog("The User clicks on Product button ");
     }
 
     public void clickMenOption(){
         elementMethods.clickJSElement(menCategoryMenu);
+        loggerUtility.infoLog("The User clicks on Man Option ");
     }
 
     public void clickCart(){
         elementMethods.clickJSElement(cartMenu);
+        loggerUtility.infoLog("The User clicks on Cart menu ");
     }
 
     public void clickViewProduct2(){
         elementMethods.clickJSElement(viewProduct2);
+        loggerUtility.infoLog("The User clicks on View Product ");
     }
 
     public void setQuantity(int quantity){
@@ -60,9 +66,11 @@ public class HomePage extends BasePage {
 
     public void clickAddToCart(){
         elementMethods.clickJSElement(addToCartButton);
+        loggerUtility.infoLog("The User clicks on Add to cart button ");
     }
 
     public void clickViewCart(){
         elementMethods.clickJSElement(viewCartButton);
+        loggerUtility.infoLog("The User clicks on View Cart Option ");
     }
 }

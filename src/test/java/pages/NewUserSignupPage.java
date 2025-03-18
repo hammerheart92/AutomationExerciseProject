@@ -11,80 +11,86 @@ public class NewUserSignupPage extends BasePage {
     }
 
     @FindBy(css = "input[data-qa='signup-name']")
-    public WebElement nameElement;
+    private WebElement nameElement;
     @FindBy(css = "input[data-qa='signup-email']")
-    public WebElement emailAddressElement;
+    private WebElement emailAddressElement;
     @FindBy(css = "button[data-qa='signup-button']")
-    public WebElement signupElement;
+    private WebElement signupElement;
     @FindBy(xpath = "//input[@id='id_gender1']") // Locator reparat
-    public WebElement selectTitleElement;
+    private WebElement selectTitleElement;
     @FindBy(xpath = "//input[@id='password']")
-    public WebElement passwordElement;
+    private WebElement passwordElement;
     @FindBy(id = "days")
-    public WebElement dateOfBirthDayElement;
+    private WebElement dateOfBirthDayElement;
     @FindBy(id = "months")
-    public WebElement dateOfBirthMonthElement;
+    private WebElement dateOfBirthMonthElement;
     @FindBy(id = "years")
-    public WebElement dateOfBirthYearElement;
+    private WebElement dateOfBirthYearElement;
     @FindBy(id = "newsletter")
-    public WebElement signUpForOurNewsLetterCheckbox;
+    private WebElement signUpForOurNewsLetterCheckbox;
     @FindBy(id = "optin")
-    public WebElement receiveSpecialOffersFromOurPartnersCheckbox;
+    private WebElement receiveSpecialOffersFromOurPartnersCheckbox;
     @FindBy(linkText = "Continue")
-    public WebElement continueButton;
+    private WebElement continueButton;
     @FindBy(xpath = "//i[@class='fa fa-trash-o']")
-    public WebElement deleteAccountElement;
+    private WebElement deleteAccountElement;
     @FindBy(xpath = "//a[contains(@class, 'btn-primary') and text()='Continue']")
-    public WebElement continueButton2;
+    private WebElement continueButton2;
 
     public void fillUserEmail(String nameValue, String emailAddressValue) {
-        System.out.println("Completez câmpurile Name și Email.");
         elementMethods.waitVisibleElement(nameElement);
+        loggerUtility.infoLog("Wait until the page is loaded");
         elementMethods.fillElementWithFallback(nameElement, nameValue);
+        loggerUtility.infoLog("The User fills Name field with " + nameValue + " value");
         elementMethods.fillElementWithFallback(emailAddressElement, emailAddressValue);
+        loggerUtility.infoLog("The User fills Email Address field with " + emailAddressValue + " value");
     }
 
     public void clickSignupButton() {
-        System.out.println("Apăs pe butonul Signup.");
         elementMethods.clickJSElement(signupElement);
+        loggerUtility.infoLog("The User clicks on Sign Up button");
     }
 
     public void clickSelectTitle() {
-        System.out.println("Selectez titlul.");
         elementMethods.clickJSElement(selectTitleElement);
+        loggerUtility.infoLog("The User selects the title");
     }
 
     public void fillPasswordField(String passwordValue) {
-        System.out.println("Completez câmpul Password.");
         elementMethods.fillElementWithFallback(passwordElement, passwordValue);
+        loggerUtility.infoLog("The User fills Password field with " + passwordValue + " value");
     }
 
     public void selectDateOfBirth(String dateOfBirthDayValue, String dateOfBirthMonthValue, String dateOfBirthYearValue) {
-        System.out.println("Selectez data de naștere: ziua " + dateOfBirthDayValue + ", luna " + dateOfBirthMonthValue + ", anul " + dateOfBirthYearValue);
         elementMethods.selectDropdownElement(dateOfBirthDayElement, dateOfBirthDayValue);
         elementMethods.selectDropdownElement(dateOfBirthMonthElement, dateOfBirthMonthValue);
         elementMethods.selectDropdownElement(dateOfBirthYearElement, dateOfBirthYearValue);
+        loggerUtility.infoLog("The User selects Date of Birth: Day " + dateOfBirthDayValue + ", Month " + dateOfBirthMonthValue + ", Year " + dateOfBirthYearValue);
     }
 
     public void selectOptionFromCheckbox() {
-        System.out.println("Selectez checkbox-urile.");
         elementMethods.clickJSElement(signUpForOurNewsLetterCheckbox);
+        loggerUtility.infoLog("The User selects Sign up for our newsletter! from the checkbox");
         elementMethods.clickJSElement(receiveSpecialOffersFromOurPartnersCheckbox);
+        loggerUtility.infoLog("The User selects Receive special offers from our partners! from the checkbox");
     }
 
     public void clickContinueButton() {
-        System.out.println("Apăs pe butonul Continue.");
         elementMethods.waitVisibleElement(continueButton);
+        loggerUtility.infoLog("Wait until next page is loaded");
         elementMethods.clickJSElement(continueButton);
+        loggerUtility.infoLog("The User clicks on continue button");
     }
 
     public void clickDeleteAccount(){
-        System.out.println("Apăs pe butonul Delete Account.");
         elementMethods.waitVisibleElement(deleteAccountElement);
+        loggerUtility.infoLog("Wait until Delete Account option is visible");
         elementMethods.clickJSElement(deleteAccountElement);
+        loggerUtility.infoLog("The User clicks on Delete Account");
     }
 
     public void clickContinueButton2(){
         elementMethods.clickJSElement(continueButton2);
+        loggerUtility.infoLog("The User clicks on Continue Button");
     }
 }

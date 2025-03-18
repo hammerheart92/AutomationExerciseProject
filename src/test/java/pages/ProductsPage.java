@@ -11,26 +11,27 @@ public class ProductsPage extends BasePage{
     }
 
     @FindBy(xpath = "//a[@href='/products']")
-    public WebElement productsElement;
+    private WebElement productsElement;
     @FindBy(xpath = "//div[@class='features_items']")
-    public WebElement productsList;
+    private WebElement productsList;
     @FindBy(css = "a[href='/product_details/1']")
-    public WebElement viewProductButton;
+    private WebElement viewProductButton;
     @FindBy(xpath = "//a[@data-toggle='tab' and @href='#reviews']")
-    public WebElement writeYourReviewTab;
+    private WebElement writeYourReviewTab;
     @FindBy(id = "name")
-    public WebElement nameElement;
+    private WebElement nameElement;
     @FindBy(id = "email")
-    public WebElement emailElement;
+    private WebElement emailElement;
     @FindBy (id = "review")
-    public WebElement writeReview;
+    private WebElement writeReview;
     @FindBy(id = "button-review")
-    public WebElement submitButton;
+    private WebElement submitButton;
     @FindBy(xpath = "//span[contains(text(),'Thank you for your review.')]")
-    public WebElement successMessage;
+    private WebElement successMessage;
 
     public void clickProductsMenu() {
         elementMethods.clickJSElement(productsElement);
+        loggerUtility.infoLog("The User clicks on Products menu");
     }
 
     public boolean isProductsListDisplayed() {
@@ -39,6 +40,7 @@ public class ProductsPage extends BasePage{
 
     public void clickViewProduct() {
         elementMethods.clickJSElement(viewProductButton);
+        loggerUtility.infoLog("The User clicks on Products button");
     }
 
     public boolean isWriteYourReviewTabDisplayed() {
@@ -47,12 +49,16 @@ public class ProductsPage extends BasePage{
 
     public void fillReviewData(String nameValue, String emailValue, String writeReviewValue) {
         elementMethods.fillElementWithFallback(nameElement, nameValue);
+        loggerUtility.infoLog("The User fills Your Name field with " + nameValue + " value");
         elementMethods.fillElementWithFallback(emailElement, emailValue);
+        loggerUtility.infoLog("The User fills Email Adress field with " + emailValue + " value");
         elementMethods.fillElementWithFallback(writeReview, writeReviewValue);
+        loggerUtility.infoLog("The User fills Add Review Here! field with " + writeReviewValue + " value");
     }
 
     public void clickSubmit() {
         elementMethods.clickJSElement(submitButton);
+        loggerUtility.infoLog("The User clicks on Submit button");
     }
 
     public boolean isSuccessMessageDisplayed() {

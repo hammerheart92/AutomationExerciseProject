@@ -12,30 +12,40 @@ public class MenCategoryPage extends BasePage {
     }
 
     @FindBy(xpath = "//a[normalize-space()='Tshirts']")
-    public WebElement tShirtsOptionElement;
+    private WebElement tShirtsOptionElement;
     @FindBy(css = "a[data-product-id='43']")
-    public WebElement addProductNr6;
+    private WebElement addProductNr6;
     @FindBy(css = "a[data-product-id='29']")
-    public WebElement addProductNr3;
+    private WebElement addProductNr3;
     @FindBy(css = "a[data-product-id='30']")
-    public WebElement AddProductNr4;
+    private WebElement AddProductNr4;
     @FindBy(xpath = "//button[text()='Continue Shopping']")
-    public WebElement continueShoppingButton;
+    private WebElement continueShoppingButton;
 
     public void clickTShirtsOption(){
         elementMethods.clickJSElement(tShirtsOptionElement);
+        loggerUtility.infoLog("The User clicks on Men Category TShirt option");
     }
 
     public void addProductToCart(){
         elementMethods.hoverOverElement(addProductNr6);
+        loggerUtility.infoLog("The User hovers over product Rs. 1389");
         elementMethods.clickJSElement(addProductNr6);
+        loggerUtility.infoLog("The User clicks on product Rs. 1389");
         elementMethods.clickJSElement(continueShoppingButton);
+        loggerUtility.infoLog("The User click on ContinueShopping button");
         elementMethods.hoverOverElement(addProductNr3);
+        loggerUtility.infoLog("The User hovers over product Rs. 1000");
         elementMethods.clickJSElement(addProductNr3);
+        loggerUtility.infoLog("The User clicks on product Rs. 1000");
         elementMethods.clickJSElement(continueShoppingButton);
+        loggerUtility.infoLog("The User click on ContinueShopping button");
         elementMethods.hoverOverElement(AddProductNr4);
+        loggerUtility.infoLog("The User hovers over product Rs. 1500");
         elementMethods.clickJSElement(AddProductNr4);
+        loggerUtility.infoLog("The User clicks on product Rs. 1500");
         elementMethods.clickJSElement(continueShoppingButton);
+        loggerUtility.infoLog("The User click on ContinueShopping button");
     }
 
     public void clickContinueShopping() {

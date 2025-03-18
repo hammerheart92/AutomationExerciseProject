@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenCategoryPage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class AddProductsToCartTest extends SharedData {
+public class AddProductsToCartTest extends Hooks {
 
     @Test
     public void testMethod() {

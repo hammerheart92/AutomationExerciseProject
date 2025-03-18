@@ -11,7 +11,7 @@ public class AddToCartPage extends BasePage {
     }
 
     @FindBy(id = "2")
-    public WebElement addProduct2;
+    private WebElement addProduct2;
 
     public void clickAddToCart(){
         elementMethods.clickJSElement(addProduct2);

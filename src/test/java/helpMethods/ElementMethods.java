@@ -70,13 +70,13 @@ public class ElementMethods {
             if (element.isDisplayed() && element.isEnabled()) {
                 element.clear();
                 element.sendKeys(value);
-                System.out.println("Element completat direct: " + element.getAttribute("name"));
+//
             } else {
                 throw new ElementNotInteractableException("Elementul nu este interactiv.");
             }
         } catch (ElementNotInteractableException e) {
             // Fallback: JavaScriptExecutor
-            System.out.println("Folosim fallback JavaScriptExecutor pentru completare.");
+//
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].value='" + value + "';", element);
         } catch (Exception ex) {

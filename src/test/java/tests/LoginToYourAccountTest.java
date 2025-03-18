@@ -3,9 +3,9 @@ package tests;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginToYourAccountPage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class LoginToYourAccountTest extends SharedData {
+public class LoginToYourAccountTest extends Hooks {
 
     @Test
     public void testMethod() {

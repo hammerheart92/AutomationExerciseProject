@@ -4,23 +4,23 @@ import org.testng.annotations.Test;
 import pages.AddressInformationPage;
 import pages.HomePage;
 import pages.NewUserSignupPage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class NewUserSignupTest extends SharedData {
+public class NewUserSignupTest extends Hooks {
 
     @Test
     public void testMethod() {
 
         String name = "Apaczai";
-        String emailAddress = "death_kinght@test.com";
-        String password = "nothinng";
+        String emailAddress = "death_knight@test.com";
+        String password = "nothing";
         String dateOfBirthDay = "2";
         String dateOfBirthMonth = "January";
         String dateOfBirthYear = "1992";
 
         String firstName = "Apaczai";
         String lastName = "Laszlo";
-        String company = "Vodafone";
+        String company = "Quantic Lab";
         String address = "Str. Ciucas, Nr. 9";
         String address2 = "Str. Sg. Hategan, Bl. A6";
         String country = "New Zealand";
@@ -48,7 +48,6 @@ public class NewUserSignupTest extends SharedData {
         newUserSignupPage.clickContinueButton();
 
         newUserSignupPage.clickDeleteAccount();
-        System.out.println("Contul a fost șters cu succes.");
 
         newUserSignupPage.clickContinueButton2();
     }

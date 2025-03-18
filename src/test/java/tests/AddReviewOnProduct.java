@@ -3,9 +3,9 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ProductsPage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class AddReviewOnProduct extends SharedData {
+public class AddReviewOnProduct extends Hooks {
 
     @Test
     public void testMethod() {

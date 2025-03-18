@@ -11,31 +11,37 @@ public class ContactUsPage extends BasePage{
     }
 
     @FindBy(xpath = "//input[@data-qa='name']")
-    public WebElement nameElement;
+    private WebElement nameElement;
     @FindBy(xpath = "//input[@data-qa='email']")
-    public WebElement emailElement;
+    private WebElement emailElement;
     @FindBy(xpath = "//input[@data-qa='subject']")
-    public WebElement subjectElement;
+    private WebElement subjectElement;
     @FindBy(id = "message")
-    public WebElement typeMessageElement;
+    private WebElement typeMessageElement;
     @FindBy(xpath = "//input[@name='upload_file']")
-    public WebElement uploadFileElement;
+    private WebElement uploadFileElement;
     @FindBy(xpath = "//input[@data-qa='submit-button']")
-    public WebElement submitButtonElement;
+    private WebElement submitButtonElement;
     @FindBy(xpath = "//button[@aria-label='Accept all']")
-    public WebElement acceptAllButton;
+    private WebElement acceptAllButton;
 
     public void fillContactUsPageWithProvidedData(String nameValue, String emailValue, String subjectValue,
                                                   String typeMessageValue, String uploadFileValue){
         elementMethods.fillElementWithFallback(nameElement, nameValue);
+        loggerUtility.infoLog("The User fills Name field with " + nameValue + " value");
         elementMethods.fillElementWithFallback(emailElement, emailValue);
+        loggerUtility.infoLog("The User fills Email field with " + emailValue + " value");
         elementMethods.fillElementWithFallback(subjectElement, subjectValue);
+        loggerUtility.infoLog("The User fills Subject field with " + subjectValue + " value");
         elementMethods.fillElementWithFallback(typeMessageElement, typeMessageValue);
+        loggerUtility.infoLog("The User fills Your Message Here field with " + typeMessageValue + " value");
         elementMethods.fillElementWithFallback(uploadFileElement, uploadFileValue);
+        loggerUtility.infoLog("the User uploads a file" + uploadFileValue);
     }
 
     public void clickSubmitButton(){
         elementMethods.clickJSElement(submitButtonElement);
+        loggerUtility.infoLog("The User clicks on Submit Button");
 //        elementMethods.clickJSElement(acceptAllButton);
     }
 
