@@ -1,20 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class ContactUsPage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class ContactUsPage extends BasePage{
 
     public ContactUsPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @FindBy(xpath = "//input[@data-qa='name']")
@@ -31,7 +24,6 @@ public class ContactUsPage {
     public WebElement submitButtonElement;
     @FindBy(xpath = "//button[@aria-label='Accept all']")
     public WebElement acceptAllButton;
-
 
     public void fillContactUsPageWithProvidedData(String nameValue, String emailValue, String subjectValue,
                                                   String typeMessageValue, String uploadFileValue){

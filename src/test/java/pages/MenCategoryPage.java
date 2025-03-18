@@ -1,21 +1,14 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class MenCategoryPage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class MenCategoryPage extends BasePage {
 
     public MenCategoryPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @FindBy(xpath = "//a[normalize-space()='Tshirts']")
@@ -28,7 +21,6 @@ public class MenCategoryPage {
     public WebElement AddProductNr4;
     @FindBy(xpath = "//button[text()='Continue Shopping']")
     public WebElement continueShoppingButton;
-
 
     public void clickTShirtsOption(){
         elementMethods.clickJSElement(tShirtsOptionElement);

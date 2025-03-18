@@ -1,25 +1,15 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.AddressInformationPage;
 import pages.HomePage;
 import pages.NewUserSignupPage;
+import sharedData.SharedData;
 
-import java.time.Duration;
-
-public class NewUserSignupTest {
-
-    public WebDriver driver;
+public class NewUserSignupTest extends SharedData {
 
     @Test
     public void testMethod() {
-
-        driver = new ChromeDriver();
-        driver.get("https://www.automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String name = "Apaczai";
         String emailAddress = "death_kinght@test.com";

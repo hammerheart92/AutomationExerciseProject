@@ -1,20 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class AddressInformationPage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class AddressInformationPage extends BasePage {
 
     public AddressInformationPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @FindBy(id = "first_name")

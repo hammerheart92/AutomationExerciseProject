@@ -1,20 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginToYourAccountPage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class LoginToYourAccountPage extends BasePage{
 
     public LoginToYourAccountPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @FindBy(css = "input[data-qa='login-email']")

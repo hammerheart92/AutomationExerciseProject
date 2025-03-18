@@ -1,24 +1,14 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginToYourAccountPage;
+import sharedData.SharedData;
 
-import java.time.Duration;
-
-public class LoginToYourAccountTest {
-
-    public WebDriver driver;
+public class LoginToYourAccountTest extends SharedData {
 
     @Test
     public void testMethod() {
-
-        driver = new ChromeDriver();
-        driver.get("https://www.automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String emailAddress = "laszlo@test.com";
         String password = "gothicChichi";

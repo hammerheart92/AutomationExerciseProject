@@ -1,24 +1,14 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ProductsPage;
+import sharedData.SharedData;
 
-import java.time.Duration;
-
-public class AddReviewOnProduct {
-
-    public WebDriver driver;
+public class AddReviewOnProduct extends SharedData {
 
     @Test
     public void testMethod() {
-
-        driver = new ChromeDriver();
-        driver.get("https://www.automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String yourName = "Apaczai Laszlo";
         String emailAddress = "laszlo@test.com";
@@ -41,4 +31,4 @@ public class AddReviewOnProduct {
         Assert.assertTrue(productsPage.isSuccessMessageDisplayed(), "ERROR: Success message not displayed!");
         Assert.assertEquals(productsPage.getSuccessMessageText(), expectedSuccessMessage, "ERROR: Success message text does not match!");
     }
-    }
+}

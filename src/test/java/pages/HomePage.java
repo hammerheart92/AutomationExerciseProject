@@ -1,20 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver,this);
+        super(driver);
     }
 
     @FindBy(xpath = "//i[@class='fa fa-lock']")

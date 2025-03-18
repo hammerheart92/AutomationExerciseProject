@@ -1,20 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class NewUserSignupPage {
-
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class NewUserSignupPage extends BasePage {
 
     public NewUserSignupPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @FindBy(css = "input[data-qa='signup-name']")
@@ -46,6 +39,7 @@ public class NewUserSignupPage {
 
     public void fillUserEmail(String nameValue, String emailAddressValue) {
         System.out.println("Completez câmpurile Name și Email.");
+        elementMethods.waitVisibleElement(nameElement);
         elementMethods.fillElementWithFallback(nameElement, nameValue);
         elementMethods.fillElementWithFallback(emailAddressElement, emailAddressValue);
     }

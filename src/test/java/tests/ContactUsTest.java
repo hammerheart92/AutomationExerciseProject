@@ -1,26 +1,17 @@
 package tests;
 
 import helpMethods.AlertMethods;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.ContactUsPage;
 import pages.HomePage;
+import sharedData.SharedData;
 
 import java.nio.file.Paths;
-import java.time.Duration;
 
-public class ContactUsTest {
-
-    public WebDriver driver;
+public class ContactUsTest extends SharedData {
 
     @Test
     public void testMethod() {
-
-        driver = new ChromeDriver();
-        driver.get("https://www.automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String name = "Laszlo";
         String email = "testautomation@test.com";

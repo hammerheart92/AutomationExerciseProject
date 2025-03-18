@@ -1,24 +1,14 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import sharedData.SharedData;
 
-import java.time.Duration;
-
-public class VerifyProductQuantityInCartTest {
-
-    public WebDriver driver;
+public class VerifyProductQuantityInCartTest extends SharedData {
 
     @Test
     public void testMethod() {
-
-        driver = new ChromeDriver();
-        driver.get("https://www.automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(driver.getTitle().contains("Automation Exercise"), "Home page not loaded successfully");
