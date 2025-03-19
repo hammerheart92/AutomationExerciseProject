@@ -5,10 +5,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import sharedData.Hooks;
 
 import java.time.Duration;
+import java.util.List;
 
-public class ElementMethods {
+public class ElementMethods extends Hooks {
 
     public WebDriver driver;
 
@@ -62,7 +64,6 @@ public class ElementMethods {
     }
 
 
-
     public void fillElementWithFallback(WebElement element, String value) {
         try {
             // Așteaptă ca elementul să fie vizibil și interactiv
@@ -89,4 +90,32 @@ public class ElementMethods {
         Actions actions = new Actions(driver); // Initialize the Actions class
         actions.moveToElement(element).perform(); // Move to the element
     }
+
+    public void handleConsentPopup() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+            // Updated locator: Finds the button with exact text "Consent"
+            By consentButtonLocator = By.xpath("//button[normalize-space()='Consent']");
+
+            WebElement consentButton = wait.until(ExpectedConditions.elementToBeClickable(consentButtonLocator));
+
+            if (consentButton.isDisplayed()) {
+                loggerUtility.infoLog("Consent pop-up detected. Attempting to close...");
+
+                try {
+                    consentButton.click();
+                    loggerUtility.infoLog("Consent pop-up successfully accepted.");
+                } catch (Exception e) {
+                    loggerUtility.infoLog("Normal click failed, trying JavaScript...");
+                    JavascriptExecutor js = (JavascriptExecutor) driver;
+                    js.executeScript("arguments[0].click();", consentButton);
+                    loggerUtility.infoLog("JavaScript click executed successfully.");
+                }
+            }
+        } catch (TimeoutException | NoSuchElementException e) {
+            loggerUtility.infoLog("No consent pop-up found, continuing test.");
+        }
+    }
+
 }

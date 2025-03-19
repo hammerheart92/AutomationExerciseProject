@@ -20,6 +20,7 @@ public class ContactUsTest extends Hooks {
         String uploadFilePath = Paths.get("src/test/java/tests/resources/Test_file.txt").toAbsolutePath().toString();
 
         HomePage homePage = new HomePage(driver);
+        homePage.handleConsentPopUp();
         homePage.clickContactUs();
 
         ContactUsPage contactUsPage = new ContactUsPage(driver);

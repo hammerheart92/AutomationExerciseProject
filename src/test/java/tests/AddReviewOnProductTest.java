@@ -2,10 +2,11 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.ProductsPage;
 import sharedData.Hooks;
 
-public class AddReviewOnProduct extends Hooks {
+public class AddReviewOnProductTest extends Hooks {
 
     @Test
     public void testMethod() {
@@ -13,6 +14,9 @@ public class AddReviewOnProduct extends Hooks {
         String yourName = "Apaczai Laszlo";
         String emailAddress = "laszlo@test.com";
         String addReviewHere = "Chi Chi is a cat";
+
+        HomePage homePage = new HomePage(driver);
+        homePage.handleConsentPopUp();
 
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage.clickProductsMenu();

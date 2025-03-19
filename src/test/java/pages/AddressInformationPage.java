@@ -33,6 +33,10 @@ public class AddressInformationPage extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Create Account']")
     private WebElement createAccountButton;
 
+    public void handleConsentPopUp(){
+        elementMethods.handleConsentPopup();
+    }
+
     public void fillAddressInformation(String firstNameValue, String lastNameValue, String companyValue, String addressValue,
                                        String address2Value, String countryValue, String stateValue,
                                        String cityValue, String zipCodeValue, String mobileNumberValue) {

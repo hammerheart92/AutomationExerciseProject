@@ -30,6 +30,7 @@ public class NewUserSignupTest extends Hooks {
         String mobileNumber = "0754954959";
 
         HomePage homePage = new HomePage(driver);
+        homePage.handleConsentPopUp();
         homePage.clickSignupLogin();
 
         NewUserSignupPage newUserSignupPage = new NewUserSignupPage(driver);
@@ -40,6 +41,7 @@ public class NewUserSignupTest extends Hooks {
         newUserSignupPage.fillPasswordField(password);
         newUserSignupPage.selectDateOfBirth(dateOfBirthDay, dateOfBirthMonth, dateOfBirthYear);
         newUserSignupPage.selectOptionFromCheckbox();
+
         AddressInformationPage addressInformationPage = new AddressInformationPage(driver);
         addressInformationPage.fillAddressInformation(firstName, lastName, company, address, address2, country,
                 state, city, zipCode, mobileNumber);

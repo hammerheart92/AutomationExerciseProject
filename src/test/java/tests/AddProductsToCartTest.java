@@ -12,6 +12,7 @@ public class AddProductsToCartTest extends Hooks {
     public void testMethod() {
 
         HomePage homePage = new HomePage(driver);
+        homePage.handleConsentPopUp();
         Assert.assertTrue(driver.getTitle().contains("Automation Exercise"), "Home page not loaded successfully");
         homePage.clickProductsButton();
         homePage.clickMenOption();

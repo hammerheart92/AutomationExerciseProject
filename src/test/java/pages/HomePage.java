@@ -29,6 +29,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='/view_cart']")
     private WebElement viewCartButton;
 
+    public void handleConsentPopUp(){
+        elementMethods.handleConsentPopup();
+    }
+
     public void clickSignupLogin(){
         elementMethods.clickJSElement(signupLoginMenu);
         loggerUtility.infoLog("The User clicks on Signup/Login menu ");
@@ -73,4 +77,5 @@ public class HomePage extends BasePage {
         elementMethods.clickJSElement(viewCartButton);
         loggerUtility.infoLog("The User clicks on View Cart Option ");
     }
+
 }

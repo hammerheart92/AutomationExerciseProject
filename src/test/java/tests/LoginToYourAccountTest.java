@@ -14,6 +14,7 @@ public class LoginToYourAccountTest extends Hooks {
         String password = "gothicChichi";
 
         HomePage homePage = new HomePage(driver);
+        homePage.handleConsentPopUp();
         homePage.clickSignupLogin();
 
         LoginToYourAccountPage loginToYourAccountPage = new LoginToYourAccountPage(driver);
