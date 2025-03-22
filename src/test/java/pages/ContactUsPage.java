@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.ContactUsModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,18 +26,17 @@ public class ContactUsPage extends BasePage{
     @FindBy(xpath = "//button[@aria-label='Accept all']")
     private WebElement acceptAllButton;
 
-    public void fillContactUsPageWithProvidedData(String nameValue, String emailValue, String subjectValue,
-                                                  String typeMessageValue, String uploadFileValue){
-        elementMethods.fillElementWithFallback(nameElement, nameValue);
-        loggerUtility.infoLog("The User fills Name field with " + nameValue + " value");
-        elementMethods.fillElementWithFallback(emailElement, emailValue);
-        loggerUtility.infoLog("The User fills Email field with " + emailValue + " value");
-        elementMethods.fillElementWithFallback(subjectElement, subjectValue);
-        loggerUtility.infoLog("The User fills Subject field with " + subjectValue + " value");
-        elementMethods.fillElementWithFallback(typeMessageElement, typeMessageValue);
-        loggerUtility.infoLog("The User fills Your Message Here field with " + typeMessageValue + " value");
-        elementMethods.fillElementWithFallback(uploadFileElement, uploadFileValue);
-        loggerUtility.infoLog("the User uploads a file" + uploadFileValue);
+    public void fillContactUsPageWithProvidedData(ContactUsModel testData){
+        elementMethods.fillElementWithFallback(nameElement, testData.getName());
+        loggerUtility.infoLog("The User fills Name field with " + testData.getName() + " value");
+        elementMethods.fillElementWithFallback(emailElement, testData.getEmail());
+        loggerUtility.infoLog("The User fills Email field with " + testData.getEmail() + " value");
+        elementMethods.fillElementWithFallback(subjectElement, testData.getSubject());
+        loggerUtility.infoLog("The User fills Subject field with " + testData.getSubject() + " value");
+        elementMethods.fillElementWithFallback(typeMessageElement, testData.getMessage());
+        loggerUtility.infoLog("The User fills Your Message Here field with " + testData.getMessage() + " value");
+        elementMethods.fillElementWithFallback(uploadFileElement, testData.getUploadFilePath());
+        loggerUtility.infoLog("the User uploads a file" + testData.getUploadFilePath());
     }
 
     public void clickSubmitButton(){

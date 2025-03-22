@@ -1,6 +1,7 @@
 package tests;
 
 import helpMethods.AlertMethods;
+import modelObject.ContactUsModel;
 import org.testng.annotations.Test;
 import pages.ContactUsPage;
 import pages.HomePage;
@@ -13,19 +14,14 @@ public class ContactUsTest extends Hooks {
     @Test
     public void testMethod() {
 
-        String name = "Laszlo";
-        String email = "testautomation@test.com";
-        String subject = "Automation test";
-        String message = "This is an automation test";
-        String uploadFilePath = Paths.get("src/test/java/tests/resources/Test_file.txt").toAbsolutePath().toString();
+        ContactUsModel testData = new ContactUsModel("src/test/java/tests/resources/inputData/ContactUsResource.json");
 
         HomePage homePage = new HomePage(driver);
         homePage.handleConsentPopUp();
         homePage.clickContactUs();
 
         ContactUsPage contactUsPage = new ContactUsPage(driver);
-//        contactUsPage.acceptConsentPopup();
-        contactUsPage.fillContactUsPageWithProvidedData(name, email, subject, message, uploadFilePath);
+        contactUsPage.fillContactUsPageWithProvidedData(testData);
         contactUsPage.clickSubmitButton();
 
         AlertMethods alertMethods = new AlertMethods(driver);

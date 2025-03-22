@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.NewUserSignupModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,13 +38,13 @@ public class NewUserSignupPage extends BasePage {
     @FindBy(xpath = "//a[contains(@class, 'btn-primary') and text()='Continue']")
     private WebElement continueButton2;
 
-    public void fillUserEmail(String nameValue, String emailAddressValue) {
+    public void fillUserEmail(NewUserSignupModel testData) {
         elementMethods.waitVisibleElement(nameElement);
         loggerUtility.infoLog("Wait until the page is loaded");
-        elementMethods.fillElementWithFallback(nameElement, nameValue);
-        loggerUtility.infoLog("The User fills Name field with " + nameValue + " value");
-        elementMethods.fillElementWithFallback(emailAddressElement, emailAddressValue);
-        loggerUtility.infoLog("The User fills Email Address field with " + emailAddressValue + " value");
+        elementMethods.fillElementWithFallback(nameElement, testData.getName());
+        loggerUtility.infoLog("The User fills Name field with " + testData.getName() + " value");
+        elementMethods.fillElementWithFallback(emailAddressElement, testData.getEmailAddress());
+        loggerUtility.infoLog("The User fills Email Address field with " + testData.getEmailAddress() + " value");
     }
 
     public void clickSignupButton() {
@@ -56,16 +57,16 @@ public class NewUserSignupPage extends BasePage {
         loggerUtility.infoLog("The User selects the title");
     }
 
-    public void fillPasswordField(String passwordValue) {
-        elementMethods.fillElementWithFallback(passwordElement, passwordValue);
-        loggerUtility.infoLog("The User fills Password field with " + passwordValue + " value");
+    public void fillPasswordField(NewUserSignupModel testData) {
+        elementMethods.fillElementWithFallback(passwordElement, testData.getPassword());
+        loggerUtility.infoLog("The User fills Password field with " + testData.getPassword() + " value");
     }
 
-    public void selectDateOfBirth(String dateOfBirthDayValue, String dateOfBirthMonthValue, String dateOfBirthYearValue) {
-        elementMethods.selectDropdownElement(dateOfBirthDayElement, dateOfBirthDayValue);
-        elementMethods.selectDropdownElement(dateOfBirthMonthElement, dateOfBirthMonthValue);
-        elementMethods.selectDropdownElement(dateOfBirthYearElement, dateOfBirthYearValue);
-        loggerUtility.infoLog("The User selects Date of Birth: Day " + dateOfBirthDayValue + ", Month " + dateOfBirthMonthValue + ", Year " + dateOfBirthYearValue);
+    public void selectDateOfBirth(NewUserSignupModel testData) {
+        elementMethods.selectDropdownElement(dateOfBirthDayElement, testData.getDateOfBirthDay());
+        elementMethods.selectDropdownElement(dateOfBirthMonthElement, testData.getDateOfBirthMonth());
+        elementMethods.selectDropdownElement(dateOfBirthYearElement, testData.getDateOfBirthYear());
+        loggerUtility.infoLog("The User selects Date of Birth: Day " + testData.getDateOfBirthDay() + ", Month " + testData.getDateOfBirthMonth() + ", Year " + testData.getDateOfBirthYear());
     }
 
     public void selectOptionFromCheckbox() {

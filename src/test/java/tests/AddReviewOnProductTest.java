@@ -1,5 +1,6 @@
 package tests;
 
+import modelObject.AddReviewOnProductModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -11,9 +12,7 @@ public class AddReviewOnProductTest extends Hooks {
     @Test
     public void testMethod() {
 
-        String yourName = "Apaczai Laszlo";
-        String emailAddress = "laszlo@test.com";
-        String addReviewHere = "Chi Chi is a cat";
+        AddReviewOnProductModel testData = new AddReviewOnProductModel("src/test/java/tests/resources/inputData/AddReviewOnProductResource.json");
 
         HomePage homePage = new HomePage(driver);
         homePage.handleConsentPopUp();
@@ -29,7 +28,7 @@ public class AddReviewOnProductTest extends Hooks {
         Assert.assertEquals(driver.getCurrentUrl(), productDetailsUrl, "ERROR: The URL does not match the expected Product Details page!");
         Assert.assertTrue(productsPage.isWriteYourReviewTabDisplayed(), "ERROR: 'Write Your Review' section is not displayed!");
 
-        productsPage.fillReviewData(yourName, emailAddress, addReviewHere);
+        productsPage.fillReviewData(testData);
         productsPage.clickSubmit();
         String expectedSuccessMessage = "Thank you for your review.";
         Assert.assertTrue(productsPage.isSuccessMessageDisplayed(), "ERROR: Success message not displayed!");

@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.AddReviewOnProductModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,13 +48,13 @@ public class ProductsPage extends BasePage{
         return writeYourReviewTab.isDisplayed();
     }
 
-    public void fillReviewData(String nameValue, String emailValue, String writeReviewValue) {
-        elementMethods.fillElementWithFallback(nameElement, nameValue);
-        loggerUtility.infoLog("The User fills Your Name field with " + nameValue + " value");
-        elementMethods.fillElementWithFallback(emailElement, emailValue);
-        loggerUtility.infoLog("The User fills Email Adress field with " + emailValue + " value");
-        elementMethods.fillElementWithFallback(writeReview, writeReviewValue);
-        loggerUtility.infoLog("The User fills Add Review Here! field with " + writeReviewValue + " value");
+    public void fillReviewData(AddReviewOnProductModel testData) {
+        elementMethods.fillElementWithFallback(nameElement, testData.getYourName());
+        loggerUtility.infoLog("The User fills Your Name field with " + testData.getYourName() + " value");
+        elementMethods.fillElementWithFallback(emailElement, testData.getEmailAddress());
+        loggerUtility.infoLog("The User fills Email Adress field with " + testData.getEmailAddress() + " value");
+        elementMethods.fillElementWithFallback(writeReview, testData.getAddReviewHere());
+        loggerUtility.infoLog("The User fills Add Review Here! field with " + testData.getAddReviewHere() + " value");
     }
 
     public void clickSubmit() {

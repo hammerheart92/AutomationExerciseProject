@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.LoginToYourAccountModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,11 +22,11 @@ public class LoginToYourAccountPage extends BasePage{
     @FindBy(xpath = "//a[contains(@class, 'btn-primary') and text()='Continue']")
     private WebElement continueButton2FromLoginPage;
 
-    public void fillEmailPassword(String emailAddressValue, String passwordValue){
-        elementMethods.fillElementWithFallback(emailAddressElement, emailAddressValue);
-        loggerUtility.infoLog("The User fills Email Address field with " + emailAddressValue + " value");
-        elementMethods.fillElementWithFallback(passwordElement, passwordValue);
-        loggerUtility.infoLog("The User fills Password field with " + passwordValue + " value");
+    public void fillEmailPassword(LoginToYourAccountModel testData){
+        elementMethods.fillElementWithFallback(emailAddressElement, testData.getEmailAddress());
+        loggerUtility.infoLog("The User fills Email Address field with " + testData.getEmailAddress() + " value");
+        elementMethods.fillElementWithFallback(passwordElement, testData.getPassword());
+        loggerUtility.infoLog("The User fills Password field with " + testData.getPassword() + " value");
     }
 
     public void clickLogin(){

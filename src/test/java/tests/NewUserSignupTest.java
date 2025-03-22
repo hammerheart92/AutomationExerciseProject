@@ -1,5 +1,6 @@
 package tests;
 
+import modelObject.NewUserSignupModel;
 import org.testng.annotations.Test;
 import pages.AddressInformationPage;
 import pages.HomePage;
@@ -11,40 +12,23 @@ public class NewUserSignupTest extends Hooks {
     @Test
     public void testMethod() {
 
-        String name = "Apaczai";
-        String emailAddress = "death_knight@test.com";
-        String password = "nothing";
-        String dateOfBirthDay = "2";
-        String dateOfBirthMonth = "January";
-        String dateOfBirthYear = "1992";
-
-        String firstName = "Apaczai";
-        String lastName = "Laszlo";
-        String company = "Quantic Lab";
-        String address = "Str. Ciucas, Nr. 9";
-        String address2 = "Str. Sg. Hategan, Bl. A6";
-        String country = "New Zealand";
-        String state = "Cluj";
-        String city = "Cluj - Napoca";
-        String zipCode = "323234";
-        String mobileNumber = "0754954959";
+        NewUserSignupModel testData = new NewUserSignupModel("src/test/java/tests/resources/inputData/NewUserSignupResource.json");
 
         HomePage homePage = new HomePage(driver);
         homePage.handleConsentPopUp();
         homePage.clickSignupLogin();
 
         NewUserSignupPage newUserSignupPage = new NewUserSignupPage(driver);
-        newUserSignupPage.fillUserEmail(name, emailAddress);
+        newUserSignupPage.fillUserEmail(testData);
         newUserSignupPage.clickSignupButton();
 
         newUserSignupPage.clickSelectTitle();
-        newUserSignupPage.fillPasswordField(password);
-        newUserSignupPage.selectDateOfBirth(dateOfBirthDay, dateOfBirthMonth, dateOfBirthYear);
+        newUserSignupPage.fillPasswordField(testData);
+        newUserSignupPage.selectDateOfBirth(testData);
         newUserSignupPage.selectOptionFromCheckbox();
 
         AddressInformationPage addressInformationPage = new AddressInformationPage(driver);
-        addressInformationPage.fillAddressInformation(firstName, lastName, company, address, address2, country,
-                state, city, zipCode, mobileNumber);
+        addressInformationPage.fillAddressInformation(testData);
 
         addressInformationPage.clickCreateAccount();
         newUserSignupPage.clickContinueButton();

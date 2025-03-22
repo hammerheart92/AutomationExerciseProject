@@ -1,0 +1,7 @@
+{
+  "name": "Laszlo",
+  "email": "testautomation@test.com",
+  "subject": "Automation test",
+  "message": "This is an automation test",
+  "uploadFilePath": "src/test/java/tests/resources/Test_file.txt"
+}

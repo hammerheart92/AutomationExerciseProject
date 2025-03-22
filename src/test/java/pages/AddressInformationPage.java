@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.NewUserSignupModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,29 +38,27 @@ public class AddressInformationPage extends BasePage {
         elementMethods.handleConsentPopup();
     }
 
-    public void fillAddressInformation(String firstNameValue, String lastNameValue, String companyValue, String addressValue,
-                                       String address2Value, String countryValue, String stateValue,
-                                       String cityValue, String zipCodeValue, String mobileNumberValue) {
-        elementMethods.fillElementWithFallback(firstNameElement, firstNameValue);
-        loggerUtility.infoLog("The User fills First Name field with " + firstNameValue + " value");
-        elementMethods.fillElementWithFallback(lastNameElement, lastNameValue);
-        loggerUtility.infoLog("The User fills Last Name field with " + lastNameValue + " value");
-        elementMethods.fillElementWithFallback(companyElement, companyValue);
-        loggerUtility.infoLog("The User fills Company field with " + companyValue + " value");
-        elementMethods.fillElementWithFallback(addressElement, addressValue);
-        loggerUtility.infoLog("The User fills Address field with " + addressValue + " value");
-        elementMethods.fillElementWithFallback(address2Element, address2Value);
-        loggerUtility.infoLog("The User fills Address2 field with " + address2Value + " value");
-        elementMethods.selectDropdownElement(countryElement, countryValue);
-        loggerUtility.infoLog("The User selects Country from the dropdown list with " + countryValue + " value");
-        elementMethods.fillElementWithFallback(stateElement, stateValue);
-        loggerUtility.infoLog("The User fills State field with " + stateValue + " value");
-        elementMethods.fillElementWithFallback(cityElement, cityValue);
-        loggerUtility.infoLog("The User fills City field with " + cityValue + " value");
-        elementMethods.fillElementWithFallback(zipCodeElement, zipCodeValue);
-        loggerUtility.infoLog("The User fills Zip Code field with " + zipCodeValue + " value");
-        elementMethods.fillElementWithFallback(mobileNumberElement, mobileNumberValue);
-        loggerUtility.infoLog("The User fills Mobile Number field with " + mobileNumberValue + " value");
+    public void fillAddressInformation(NewUserSignupModel testData) {
+        elementMethods.fillElementWithFallback(firstNameElement, testData.getFirstName());
+        loggerUtility.infoLog("The User fills First Name field with " + testData.getFirstName() + " value");
+        elementMethods.fillElementWithFallback(lastNameElement, testData.getLastName());
+        loggerUtility.infoLog("The User fills Last Name field with " + testData.getLastName() + " value");
+        elementMethods.fillElementWithFallback(companyElement, testData.getCompany());
+        loggerUtility.infoLog("The User fills Company field with " + testData.getCompany() + " value");
+        elementMethods.fillElementWithFallback(addressElement, testData.getAddress());
+        loggerUtility.infoLog("The User fills Address field with " + testData.getAddress() + " value");
+        elementMethods.fillElementWithFallback(address2Element, testData.getAddress2());
+        loggerUtility.infoLog("The User fills Address2 field with " + testData.getAddress2() + " value");
+        elementMethods.selectDropdownElement(countryElement, testData.getCountry());
+        loggerUtility.infoLog("The User selects Country from the dropdown list with " + testData.getCountry() + " value");
+        elementMethods.fillElementWithFallback(stateElement, testData.getState());
+        loggerUtility.infoLog("The User fills State field with " + testData.getState() + " value");
+        elementMethods.fillElementWithFallback(cityElement, testData.getCity());
+        loggerUtility.infoLog("The User fills City field with " + testData.getCity() + " value");
+        elementMethods.fillElementWithFallback(zipCodeElement, testData.getZipCode());
+        loggerUtility.infoLog("The User fills Zip Code field with " + testData.getZipCode() + " value");
+        elementMethods.fillElementWithFallback(mobileNumberElement, testData.getMobileNumber());
+        loggerUtility.infoLog("The User fills Mobile Number field with " + testData.getMobileNumber() + " value");
     }
 
     public void clickCreateAccount() {
