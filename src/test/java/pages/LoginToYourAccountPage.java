@@ -4,6 +4,7 @@ import modelObject.LoginToYourAccountModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class LoginToYourAccountPage extends BasePage{
 
@@ -25,8 +26,10 @@ public class LoginToYourAccountPage extends BasePage{
     public void fillEmailPassword(LoginToYourAccountModel testData){
         elementMethods.fillElementWithFallback(emailAddressElement, testData.getEmailAddress());
         loggerUtility.infoLog("The User fills Email Address field with " + testData.getEmailAddress() + " value");
+        Assert.assertEquals(emailAddressElement.getAttribute("value"),testData.getEmailAddress());
         elementMethods.fillElementWithFallback(passwordElement, testData.getPassword());
         loggerUtility.infoLog("The User fills Password field with " + testData.getPassword() + " value");
+        Assert.assertEquals(passwordElement.getAttribute("value"),testData.getPassword());
     }
 
     public void clickLogin(){

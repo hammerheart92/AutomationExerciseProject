@@ -4,6 +4,7 @@ import modelObject.NewUserSignupModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class NewUserSignupPage extends BasePage {
 
@@ -43,8 +44,10 @@ public class NewUserSignupPage extends BasePage {
         loggerUtility.infoLog("Wait until the page is loaded");
         elementMethods.fillElementWithFallback(nameElement, testData.getName());
         loggerUtility.infoLog("The User fills Name field with " + testData.getName() + " value");
+        Assert.assertEquals(nameElement.getAttribute("value"),testData.getName(),"Name field was not populated correctly!");
         elementMethods.fillElementWithFallback(emailAddressElement, testData.getEmailAddress());
         loggerUtility.infoLog("The User fills Email Address field with " + testData.getEmailAddress() + " value");
+        Assert.assertEquals(emailAddressElement.getAttribute("value"),testData.getEmailAddress(),"Email Address field was not populated correctly!");
     }
 
     public void clickSignupButton() {
@@ -60,13 +63,30 @@ public class NewUserSignupPage extends BasePage {
     public void fillPasswordField(NewUserSignupModel testData) {
         elementMethods.fillElementWithFallback(passwordElement, testData.getPassword());
         loggerUtility.infoLog("The User fills Password field with " + testData.getPassword() + " value");
+        Assert.assertEquals(passwordElement.getAttribute("value"),testData.getPassword(),"Password field was not populated correctly!");
     }
 
     public void selectDateOfBirth(NewUserSignupModel testData) {
+        // Assert that the date dropdowns are displayed
+        Assert.assertTrue(dateOfBirthDayElement.isDisplayed(), "Day dropdown is not displayed!");
+        Assert.assertTrue(dateOfBirthMonthElement.isDisplayed(), "Month dropdown is not displayed!");
+        Assert.assertTrue(dateOfBirthYearElement.isDisplayed(), "Year dropdown is not displayed!");
+
+        // Select the dropdown elements and log the actions
         elementMethods.selectDropdownElement(dateOfBirthDayElement, testData.getDateOfBirthDay());
+        String selectedDay = new org.openqa.selenium.support.ui.Select(dateOfBirthDayElement).getFirstSelectedOption().getText();
+        Assert.assertEquals(selectedDay, testData.getDateOfBirthDay(), "Day value was not set correctly!");
+
         elementMethods.selectDropdownElement(dateOfBirthMonthElement, testData.getDateOfBirthMonth());
+        String selectedMonth = new org.openqa.selenium.support.ui.Select(dateOfBirthMonthElement).getFirstSelectedOption().getText();
+        Assert.assertEquals(selectedMonth, testData.getDateOfBirthMonth(), "Month value was not set correctly!");
+
         elementMethods.selectDropdownElement(dateOfBirthYearElement, testData.getDateOfBirthYear());
-        loggerUtility.infoLog("The User selects Date of Birth: Day " + testData.getDateOfBirthDay() + ", Month " + testData.getDateOfBirthMonth() + ", Year " + testData.getDateOfBirthYear());
+        String selectedYear = new org.openqa.selenium.support.ui.Select(dateOfBirthYearElement).getFirstSelectedOption().getText();
+        Assert.assertEquals(selectedYear, testData.getDateOfBirthYear(), "Year value was not set correctly!");
+
+        // Log the successful selection
+        loggerUtility.infoLog("The User selects Date of Birth: Day " + selectedDay + ", Month " + selectedMonth + ", Year " + selectedYear);
     }
 
     public void selectOptionFromCheckbox() {
