@@ -1,11 +1,6 @@
 package modelObject;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.IOException;
-
-public class NewUserSignupModel {
+public class NewUserSignupModel extends BaseModel {
 
     private String name;
     private String emailAddress;
@@ -23,6 +18,10 @@ public class NewUserSignupModel {
     private String city;
     private String zipCode;
     private String mobileNumber;
+
+    public NewUserSignupModel(String jsonFilePath) {
+        super(jsonFilePath);
+    }
 
     // Getters and Setters
 
@@ -152,21 +151,6 @@ public class NewUserSignupModel {
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
-    }
-
-    public NewUserSignupModel(String jsonFilePath) {
-        populateObject(jsonFilePath);
-    }
-
-    public void populateObject(String jsonFilePath) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            // Dynamically map all fields without specifying them manually
-            objectMapper.readerForUpdating(this).readValue(new File(jsonFilePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to populate model from JSON file: " + jsonFilePath, e);
-        }
     }
 }
 
