@@ -7,8 +7,6 @@ import pages.ContactUsPage;
 import pages.HomePage;
 import sharedData.Hooks;
 
-import java.nio.file.Paths;
-
 public class ContactUsTest extends Hooks {
 
     @Test
