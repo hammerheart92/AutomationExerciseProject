@@ -12,20 +12,15 @@ public class SharedData {
 
     public void setUpDriver() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // Run without GUI
-        options.addArguments("--no-sandbox"); // Bypass OS security model
-        options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
-        options.addArguments("--window-size=1920x1080"); // Set the window size to full HD
-        options.addArguments("--disable-gpu"); // Disable GPU hardware acceleration (useful for CI environments)
-        options.addArguments("--remote-allow-origins=*"); // Allow all origins for remote connections
-
+        options.addArguments("--headless=new"); // Run in headless mode for CI
+        options.addArguments("--no-sandbox"); // Required for GitHub Actions
+        options.addArguments("--disable-dev-shm-usage"); // Prevents memory issues
+        options.addArguments("--window-size=1920,1080"); // Set a default window size
 
         driver = new ChromeDriver(options);
         driver.get("https://www.automationexercise.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        System.out.println("Browser setup completed and opened the URL: " + driver.getCurrentUrl());
     }
 
     public WebDriver getDriver(){
